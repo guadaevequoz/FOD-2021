@@ -76,11 +76,11 @@ var
 	desc: string;
 	c:celular;
 begin
+	reset(arch);
 	writeln(' ');
 	writeln('USTED ELIGIO LA OPCION DE LISTAR CELULARES CON SU DESCRIPCION');
 	writeln('---------------');
 	writeln('Ingrese una descripcion: '); readln(desc);
-	reset(arch);
 	while(not eof(arch)) do begin
 		read(arch, c);
 		if(c.des = desc) then writeln('Nombre: ',c.nom,' - Codigo:', c.cod);

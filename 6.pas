@@ -7,6 +7,7 @@ c. Exportar el contenido del archivo binario a un archivo de texto denominado:
 ”SinStock.txt”, con aquellos celulares que tengan stock 0.
 NOTA: Las búsquedas deben realizarse por nombre de celular.}
 program seis;
+uses crt;
 type
 	celular = record
 		cod: integer;
@@ -69,6 +70,7 @@ begin
 	writeln('USTED ELIGIO LA OPCION DE LISTAR CELULARES CON SU DESCRIPCION');
 	writeln('---------------');
 	writeln('Ingrese una descripcion: '); readln(desc);
+	desc:= ' ' + desc;
 	reset(arch);
 	while(not eof(arch)) do begin
 		read(arch, c);
@@ -130,7 +132,7 @@ end;
 {PUNTO 6, INCISO B}
 procedure modificarStock(var arch:archivo_c);
 var
-	nom: string;
+	cod: integer;
 	encontre: boolean;
 	stock:  integer;
 	c:celular;
@@ -139,10 +141,10 @@ begin
 	writeln(' ');
 	writeln('-------------- Modificar  --------------');
 	reset(arch);
-	writeln('Ingrese nombre del celular: '); readln(nom);
+	writeln('Ingrese nombre del celular: '); readln(cod);
 	while(not eof(arch)) and  (not encontre) do begin
 		read(arch,c);
-		if (nom = c.nom) then encontre:= true;
+		if (cod = c.cod) then encontre:= true;
 	end;
 	if encontre then begin
 		writeln('Ingrese stock a actualizar: '); readln(stock);
@@ -191,6 +193,7 @@ begin
 	writeln('6: Modificar el stock de un celular dado..');
 	writeln('7: Exportar a sinstock.txt');
 	readln(opcion);
+	clrscr();
 	case opcion of
 		1: crearArchivo(arch);
 		2: listarStockMin(arch);
