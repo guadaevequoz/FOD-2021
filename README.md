@@ -1,2 +1,2 @@
 # FOD
-SI TE COPIAS, HAY TABLA.
+Ejercicios de la materia Fundamentos de Organización de Datos.
